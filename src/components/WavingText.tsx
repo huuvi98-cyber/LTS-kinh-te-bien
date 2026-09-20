@@ -335,9 +335,9 @@ export const WavingText: React.FC<WavingTextProps> = ({
     <div
       ref={containerRef}
       id="editorial-waving-text-container"
-      className="w-full max-w-[1000px] mx-auto bg-white select-text"
+      className="w-full max-w-[700px] mx-auto bg-white select-text"
     >
-      {/* Main waving paragraph with clean sans-serif chân phương, 1000px width and true two-sided text-justify */}
+      {/* Main waving paragraph with clean sans-serif chân phương, 700px width and true two-sided text-justify */}
       <p
         ref={paragraphRef}
         className={`font-sans-editorial text-slate-800 tracking-normal ${sizeClasses[fontSize]}`}
@@ -347,7 +347,7 @@ export const WavingText: React.FC<WavingTextProps> = ({
         }}
       >
         {rawSegments.map((item, idx) => {
-          // Special styling for LTS with a light line (no dash line before Vươn)
+          // Special styling for LTS without underline
           if (item.isLts) {
             return (
               <React.Fragment key={idx}>
@@ -362,7 +362,7 @@ export const WavingText: React.FC<WavingTextProps> = ({
                     WebkitFontSmoothing: 'antialiased'
                   }}
                 >
-                  <span className="font-semibold text-slate-900 border-b border-slate-300 pb-0.5 tracking-tight">
+                  <span className="font-semibold text-slate-900 tracking-tight">
                     LTS:
                   </span>
                 </span>
