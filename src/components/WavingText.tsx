@@ -337,13 +337,12 @@ export const WavingText: React.FC<WavingTextProps> = ({
       id="editorial-waving-text-container"
       className="w-full max-w-[700px] mx-auto bg-white select-text"
     >
-      {/* Main waving paragraph with clean sans-serif chân phương, 700px width and true two-sided text-justify */}
+      {/* Main waving paragraph with clean sans-serif chân phương, 700px width and left alignment */}
       <p
         ref={paragraphRef}
-        className={`font-sans-editorial text-slate-800 tracking-normal ${sizeClasses[fontSize]}`}
+        className={`font-sans-editorial text-slate-800 tracking-normal ${sizeClasses[fontSize]} text-left`}
         style={{
-          textAlign: 'justify',
-          textJustify: 'inter-word'
+          textAlign: 'left'
         }}
       >
         {rawSegments.map((item, idx) => {
