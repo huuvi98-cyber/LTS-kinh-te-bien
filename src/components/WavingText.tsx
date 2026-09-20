@@ -335,34 +335,39 @@ export const WavingText: React.FC<WavingTextProps> = ({
     <div
       ref={containerRef}
       id="editorial-waving-text-container"
-      className="w-full max-w-[1200px] mx-auto bg-white select-text"
+      className="w-full max-w-[1000px] mx-auto bg-white select-text"
     >
-      {/* Main waving paragraph with clean sans-serif chân phương and tighter line spacing */}
+      {/* Main waving paragraph with clean sans-serif chân phương, 1000px width and true two-sided text-justify */}
       <p
         ref={paragraphRef}
-        className={`font-sans-editorial text-slate-800 tracking-normal ${sizeClasses[fontSize]} text-justify`}
-        style={{ textJustify: 'inter-word' }}
+        className={`font-sans-editorial text-slate-800 tracking-normal ${sizeClasses[fontSize]}`}
+        style={{
+          textAlign: 'justify',
+          textJustify: 'inter-word'
+        }}
       >
         {rawSegments.map((item, idx) => {
           // Special styling for LTS with a light line (no dash line before Vươn)
           if (item.isLts) {
             return (
-              <span
-                key={idx}
-                ref={(el) => { wordRefs.current[idx] = el; }}
-                onMouseEnter={() => setHoveredIdx(idx)}
-                onMouseLeave={() => setHoveredIdx(null)}
-                className="inline-flex items-center mr-1.5 align-baseline will-change-transform cursor-default select-none"
-                style={{
-                  display: 'inline-flex',
-                  backfaceVisibility: 'hidden',
-                  WebkitFontSmoothing: 'antialiased'
-                }}
-              >
-                <span className="font-semibold text-slate-900 border-b border-slate-300 pb-0.5 tracking-tight">
-                  LTS:
+              <React.Fragment key={idx}>
+                <span
+                  ref={(el) => { wordRefs.current[idx] = el; }}
+                  onMouseEnter={() => setHoveredIdx(idx)}
+                  onMouseLeave={() => setHoveredIdx(null)}
+                  className="inline-flex items-center align-baseline will-change-transform cursor-default select-none"
+                  style={{
+                    display: 'inline-flex',
+                    backfaceVisibility: 'hidden',
+                    WebkitFontSmoothing: 'antialiased'
+                  }}
+                >
+                  <span className="font-semibold text-slate-900 border-b border-slate-300 pb-0.5 tracking-tight">
+                    LTS:
+                  </span>
                 </span>
-              </span>
+                {' '}
+              </React.Fragment>
             );
           }
 
@@ -420,22 +425,24 @@ export const WavingText: React.FC<WavingTextProps> = ({
           }
 
           return (
-            <span
-              key={idx}
-              ref={(el) => { wordRefs.current[idx] = el; }}
-              onMouseEnter={() => setHoveredIdx(idx)}
-              onMouseLeave={() => setHoveredIdx(null)}
-              className={`inline-block mr-[0.32em] transition-colors duration-150 will-change-transform cursor-default ${extraClass} ${
-                hoveredIdx === idx ? 'text-cyan-800' : ''
-              }`}
-              style={{
-                display: 'inline-block',
-                backfaceVisibility: 'hidden',
-                WebkitFontSmoothing: 'antialiased'
-              }}
-            >
-              {item.text}
-            </span>
+            <React.Fragment key={idx}>
+              <span
+                ref={(el) => { wordRefs.current[idx] = el; }}
+                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseLeave={() => setHoveredIdx(null)}
+                className={`inline-block transition-colors duration-150 will-change-transform cursor-default ${extraClass} ${
+                  hoveredIdx === idx ? 'text-cyan-800' : ''
+                }`}
+                style={{
+                  display: 'inline-block',
+                  backfaceVisibility: 'hidden',
+                  WebkitFontSmoothing: 'antialiased'
+                }}
+              >
+                {item.text}
+              </span>
+              {' '}
+            </React.Fragment>
           );
         })}
       </p>
