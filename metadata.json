@@ -1,0 +1,6 @@
+{
+  "name": "Vươn Ra Biển Lớn",
+  "description": "Tuyến bài: Mạnh về biển, phát triển bền vững từ biển với hiệu ứng chữ chuyển động gợn sóng biển trên nền trắng trang nhã.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

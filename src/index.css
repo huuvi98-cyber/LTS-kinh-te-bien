@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #ffffff;
+    color: #0f172a;
+  }
+}
+
+.font-sans-editorial {
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.font-serif-editorial {
+  font-family: 'Newsreader', Georgia, Cambria, 'Times New Roman', Times, serif;
+}
+
+/* Subtle continuous undulating wave animation for custom spans */
+@keyframes waveFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-2.5px) rotate(-0.4deg);
+  }
+  75% {
+    transform: translateY(2.5px) rotate(0.4deg);
+  }
+}
+
+/* Organic ocean wave background line */
+@keyframes waveShift {
+  0% {
+    transform: translateX(0) translateZ(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-25%) translateZ(0) scaleY(0.9);
+  }
+  100% {
+    transform: translateX(-50%) translateZ(0) scaleY(1);
+  }
+}
+
+.animate-wave-line {
+  animation: waveShift 18s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+}
+
+/* Pen drawing animation: draws line horizontally across to the right margin of the text block */
+@keyframes penDrawAcross {
+  0% {
+    width: 0%;
+  }
+  38% {
+    width: 100%;
+  }
+  86% {
+    width: 100%;
+    opacity: 1;
+  }
+  92% {
+    width: 100%;
+    opacity: 0;
+  }
+  96% {
+    width: 0%;
+    opacity: 0;
+  }
+  100% {
+    width: 0%;
+    opacity: 1;
+  }
+}
+
+@keyframes penDrawingWobble {
+  0% {
+    transform: translateY(-6.5px) rotate(0deg);
+  }
+  8%, 24% {
+    transform: translateY(-7px) rotate(-1.5deg);
+  }
+  16%, 32% {
+    transform: translateY(-6px) rotate(1.5deg);
+  }
+  38%, 100% {
+    transform: translateY(-6.5px) rotate(0deg);
+  }
+}
+
+.animate-pen-draw {
+  animation: penDrawAcross 6.8s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+  will-change: width, opacity;
+}
+
+.animate-pen-wobble {
+  animation: penDrawingWobble 6.8s ease-in-out infinite;
+  will-change: transform;
+}
